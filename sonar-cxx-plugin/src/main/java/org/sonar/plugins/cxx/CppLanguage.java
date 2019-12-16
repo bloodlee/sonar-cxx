@@ -35,12 +35,12 @@ public class CppLanguage extends CxxLanguage {
   /**
    * cxx key
    */
-  public static final String KEY = "c++";
+  public static final String KEY = "cpp";
 
   /**
    * cxx name
    */
-  public static final String NAME = "C++ (Community)";
+  public static final String NAME = "C++";
 
   /**
    * Default cxx source files suffixes
@@ -56,12 +56,12 @@ public class CppLanguage extends CxxLanguage {
   /**
    * cxx analysis parameters key
    */
-  public static final String PROPSKEY = "cxx";
+  public static final String PROPSKEY = "cpp";
 
   /**
    * cxx repository key
    */
-  public static final String REPOSITORY_KEY = "cxx";
+  public static final String REPOSITORY_KEY = "cpp";
   public static final String DEFAULT_PROFILE = "Sonar way";
 
   private final String[] sourceSuffixes;

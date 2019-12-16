@@ -39,7 +39,7 @@ public class CLanguage extends CxxLanguage {
   /**
    * c name
    */
-  public static final String NAME = "C (Community)";
+  public static final String NAME = "C";
 
   /**
    * Default c source files suffixes

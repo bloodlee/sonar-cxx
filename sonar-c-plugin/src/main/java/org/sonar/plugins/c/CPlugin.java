@@ -30,6 +30,7 @@ import org.sonar.api.batch.rule.CheckFactory;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.config.Configuration;
 import org.sonar.api.config.PropertyDefinition;
+import org.sonar.api.issue.NoSonarFilter;
 import org.sonar.api.measures.FileLinesContextFactory;
 import org.sonar.api.measures.Metric;
 import org.sonar.api.measures.Metrics;
@@ -497,9 +498,9 @@ public final class CPlugin implements Plugin {
     List<Object> l = new ArrayList<>();
 
     // plugin elements
-    l.add(CLanguage.class);
-    l.add(CDefaultProfile.class);
-    l.add(CRuleRepository.class);
+    // l.add(CLanguage.class);
+    // l.add(CDefaultProfile.class);
+    // l.add(CRuleRepository.class);
 
     // reusable elements
     l.addAll(getSensorsImpl());
@@ -528,38 +529,38 @@ public final class CPlugin implements Plugin {
     l.add(DensityMeasureComputerImpl.class);
 
     // issue sensors
-    l.add(CxxSquidSensorImpl.class);
-    l.add(CxxRatsSensorImpl.class);
-    l.add(CxxCppCheckSensorImpl.class);
+    // l.add(CxxSquidSensorImpl.class);
+    // l.add(CxxRatsSensorImpl.class);
+    // l.add(CxxCppCheckSensorImpl.class);
     l.add(CxxPCLintSensorImpl.class);
-    l.add(CxxDrMemorySensorImpl.class);
-    l.add(CxxCompilerGccSensorImpl.class);
-    l.add(CxxCompilerVcSensorImpl.class);
-    l.add(CxxVeraxxSensorImpl.class);
-    l.add(CxxValgrindSensorImpl.class);
-    l.add(CxxClangTidySensorImpl.class);
-    l.add(CxxClangSASensorImpl.class);
-    l.add(CxxExternalRulesSensorImpl.class);
+    // l.add(CxxDrMemorySensorImpl.class);
+    // l.add(CxxCompilerGccSensorImpl.class);
+    // l.add(CxxCompilerVcSensorImpl.class);
+    // l.add(CxxVeraxxSensorImpl.class);
+    // l.add(CxxValgrindSensorImpl.class);
+    // l.add(CxxClangTidySensorImpl.class);
+    // l.add(CxxClangSASensorImpl.class);
+    // l.add(CxxExternalRulesSensorImpl.class);
 
     // test sensors
-    l.add(CxxXunitSensorImpl.class);
-    l.add(CxxCoverageSensorImpl.class);
+    // l.add(CxxXunitSensorImpl.class);
+    // l.add(CxxCoverageSensorImpl.class);
 
     // rule provides
-    l.add(CxxRatsRuleRepositoryImpl.class);
-    l.add(CxxCppCheckRuleRepositoryImpl.class);
+//    l.add(CxxRatsRuleRepositoryImpl.class);
+//    l.add(CxxCppCheckRuleRepositoryImpl.class);
     l.add(CxxPCLintRuleRepositoryImpl.class);
-    l.add(CxxDrMemoryRuleRepositoryImpl.class);
-    l.add(CxxCompilerVcRuleRepositoryImpl.class);
-    l.add(CxxCompilerGccRuleRepositoryImpl.class);
-    l.add(CxxVeraxxRuleRepositoryImpl.class);
-    l.add(CxxValgrindRuleRepositoryImpl.class);
-    l.add(CxxExternalRuleRepositoryImpl.class);
-    l.add(CxxClangTidyRuleRepositoryImpl.class);
-    l.add(CxxClangSARuleRepositoryImpl.class);
+//    l.add(CxxDrMemoryRuleRepositoryImpl.class);
+//    l.add(CxxCompilerVcRuleRepositoryImpl.class);
+//    l.add(CxxCompilerGccRuleRepositoryImpl.class);
+//    l.add(CxxVeraxxRuleRepositoryImpl.class);
+//    l.add(CxxValgrindRuleRepositoryImpl.class);
+//    l.add(CxxExternalRuleRepositoryImpl.class);
+//    l.add(CxxClangTidyRuleRepositoryImpl.class);
+//    l.add(CxxClangSARuleRepositoryImpl.class);
 
     // post jobs
-    l.add(FinalReport.class);
+    // l.add(FinalReport.class);
 
     return l;
   }
@@ -688,15 +689,17 @@ public final class CPlugin implements Plugin {
 
     public CxxSquidSensorImpl(Configuration settings,
       FileLinesContextFactory fileLinesContextFactory,
-      CheckFactory checkFactory) {
-      super(new CLanguage(settings), fileLinesContextFactory, checkFactory);
+      CheckFactory checkFactory,
+      NoSonarFilter noSonarFilter) {
+      super(new CLanguage(settings), fileLinesContextFactory, checkFactory, noSonarFilter);
     }
 
     public CxxSquidSensorImpl(Configuration settings,
       FileLinesContextFactory fileLinesContextFactory,
       CheckFactory checkFactory,
+      NoSonarFilter noSonarFilter,
       @Nullable CustomCxxRulesDefinition[] customRulesDefinition) {
-      super(new CLanguage(settings), fileLinesContextFactory, checkFactory, customRulesDefinition);
+      super(new CLanguage(settings), fileLinesContextFactory, checkFactory, noSonarFilter, customRulesDefinition);
     }
   }
 
